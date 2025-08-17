@@ -20,48 +20,47 @@ from etils import epy as _epy
 
 
 with _epy.lazy_api_imports(globals()):
-    # ****************************************************************************
-    # Gemma models
-    # ****************************************************************************
-    # Gemma 2
-    from gemma.gm.nn._gemma import Gemma2_2B
-    from gemma.gm.nn._gemma import Gemma2_9B
-    from gemma.gm.nn._gemma import Gemma2_27B
+  # ****************************************************************************
+  # Gemma models
+  # ****************************************************************************
+  # Gemma 2
+  from gemma.gm.nn._gemma import Gemma2_2B
+  from gemma.gm.nn._gemma import Gemma2_9B
+  from gemma.gm.nn._gemma import Gemma2_27B
+  # Gemma 3
+  from gemma.gm.nn._gemma import Gemma3_270M
+  from gemma.gm.nn._gemma import Gemma3_1B
+  from gemma.gm.nn._gemma import Gemma3_4B
+  from gemma.gm.nn._gemma import Gemma3_12B
+  from gemma.gm.nn._gemma import Gemma3_27B
 
-    # Gemma 3
-    from gemma.gm.nn._gemma import Gemma3_270M
-    from gemma.gm.nn._gemma import Gemma3_1B
-    from gemma.gm.nn._gemma import Gemma3_4B
-    from gemma.gm.nn._gemma import Gemma3_12B
-    from gemma.gm.nn._gemma import Gemma3_27B
+  # ****************************************************************************
+  # Wrapper (LoRA, quantization, DPO,...)
+  # ****************************************************************************
+  from gemma.gm.nn._lora import LoRA
+  from gemma.gm.nn._quantization import QuantizationAwareWrapper
+  from gemma.gm.nn._quantization import IntWrapper
+  from gemma.gm.nn._policy import AnchoredPolicy
+  from gemma.gm.nn._transformer import Transformer
 
-    # ****************************************************************************
-    # Wrapper (LoRA, quantization, DPO,...)
-    # ****************************************************************************
-    from gemma.gm.nn._lora import LoRA
-    from gemma.gm.nn._quantization import QuantizationAwareWrapper
-    from gemma.gm.nn._quantization import IntWrapper
-    from gemma.gm.nn._policy import AnchoredPolicy
-    from gemma.gm.nn._transformer import Transformer
+  # ****************************************************************************
+  # Transformer building blocks
+  # ****************************************************************************
+  # Allow users to create their own transformers.
+  # TODO(epot): Also expose the Vision encoder model as standalone.
+  from gemma.gm.nn._layers import Einsum
+  from gemma.gm.nn._layers import RMSNorm
+  from gemma.gm.nn._modules import Embedder
+  from gemma.gm.nn._modules import Attention
+  from gemma.gm.nn._modules import Block
+  from gemma.gm.nn._modules import FeedForward
+  from gemma.gm.nn._modules import AttentionType
 
-    # ****************************************************************************
-    # Transformer building blocks
-    # ****************************************************************************
-    # Allow users to create their own transformers.
-    # TODO(epot): Also expose the Vision encoder model as standalone.
-    from gemma.gm.nn._layers import Einsum
-    from gemma.gm.nn._layers import RMSNorm
-    from gemma.gm.nn._modules import Embedder
-    from gemma.gm.nn._modules import Attention
-    from gemma.gm.nn._modules import Block
-    from gemma.gm.nn._modules import FeedForward
-    from gemma.gm.nn._modules import AttentionType
+  # Model inputs
+  from gemma.gm.nn._config import Cache
 
-    # Model inputs
-    from gemma.gm.nn._config import Cache
+  # Model outputs
+  from gemma.gm.nn._transformer import Output
+  from gemma.gm.nn._policy import AnchoredPolicyOutput
 
-    # Model outputs
-    from gemma.gm.nn._transformer import Output
-    from gemma.gm.nn._policy import AnchoredPolicyOutput
-
-    from gemma.gm.nn import config
+  from gemma.gm.nn import config
